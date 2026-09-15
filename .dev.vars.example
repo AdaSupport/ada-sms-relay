@@ -1,0 +1,7 @@
+# Copy to .dev.vars for `npx wrangler dev`. Never commit .dev.vars.
+ADA_API_KEY=
+ADA_WEBHOOK_SECRET=
+VONAGE_API_KEY=
+VONAGE_API_SECRET=
+VONAGE_FROM_NUMBER=12045550123
+VONAGE_SIGNATURE_SECRET=

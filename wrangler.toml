@@ -1,0 +1,28 @@
+name = "ada-sms-relay"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+
+[[kv_namespaces]]
+binding = "RELAY_KV"
+id = "<paste the id printed by: npx wrangler kv namespace create RELAY_KV>"
+
+[vars]
+# Your AI Agent's Conversations API base. Replace the handle.
+ADA_API_BASE = "https://<your-ai-agent-handle>.ada.support/api/v2"
+VONAGE_API_BASE = "https://api.nexmo.com"
+# How long (seconds) a caller's number stays mapped to their live call for inbound replies.
+CONVERSATION_TTL_SECONDS = "3600"
+# Optional. Sent once per number per hour when a text arrives after the call has ended. Leave empty to send nothing.
+ENDED_REPLY_TEXT = "This conversation has ended. Please call us again if you need more help."
+
+# Secrets, set with `npx wrangler secret put <NAME>` (never commit them):
+#   ADA_API_KEY               Platform API key from the AI Agent dashboard
+#   ADA_WEBHOOK_SECRET        The webhook endpoint's signing secret (whsec_...); optional but recommended
+#   VONAGE_API_KEY            Vonage API key
+#   VONAGE_API_SECRET         Vonage API secret
+#   VONAGE_FROM_NUMBER        Your Vonage number in E.164 digits, e.g. 12045550123
+#   VONAGE_SIGNATURE_SECRET   Vonage "signature secret" for verifying inbound webhooks; optional but recommended
